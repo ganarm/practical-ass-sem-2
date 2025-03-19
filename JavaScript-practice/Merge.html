@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merge Arrays and Remove Duplicates</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script>
+    function mergeArrays() {
+      const array1Value = document.getElementById("array1Input").value;
+      const array2Value = document.getElementById("array2Input").value;
+
+      // Convert input strings to arrays of numbers (ignoring non-numeric values)
+      const array1 = array1Value.trim() === "" ? [] :
+        array1Value.split(',').map(item => Number(item.trim())).filter(item => !isNaN(item));
+      const array2 = array2Value.trim() === "" ? [] :
+        array2Value.split(',').map(item => Number(item.trim())).filter(item => !isNaN(item));
+
+      // Merge arrays and remove duplicates
+      const mergedArray = [...new Set([...array1, ...array2])];
+
+      document.getElementById("result").textContent =
+        `Merged Array without duplicates: [${mergedArray.join(', ')}]`;
+    }
+  </script>
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="container">
+    <div class="card shadow">
+      <div class="card-body">
+        <h1 class="card-title text-center mb-4">Merge Arrays and Remove Duplicates</h1>
+        <div class="mb-3">
+          <label for="array1Input" class="form-label">Enter the first array:</label>
+          <input type="text" id="array1Input" class="form-control" oninput="mergeArrays()" placeholder="e.g., 1, 2, 3">
+        </div>
+        <div class="mb-3">
+          <label for="array2Input" class="form-label">Enter the second array:</label>
+          <input type="text" id="array2Input" class="form-control" oninput="mergeArrays()" placeholder="e.g., 3, 4, 5">
+        </div>
+        <button type="button" class="btn btn-primary w-100" onclick="mergeArrays()">Merge Arrays</button>
+        <p id="result" class="mt-3 fw-bold text-center text-primary"></p>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

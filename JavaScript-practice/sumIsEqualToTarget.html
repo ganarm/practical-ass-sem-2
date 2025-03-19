@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Pair with Target Sum</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f0f8ff;
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    input, button {
+      margin: 10px 0;
+      padding: 10px;
+      width: 90%;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #080a26;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #050525;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333333;
+    }
+  </style>
+  <script>
+    function findPair() {
+     
+      const numbers = document.getElementById("numbersInput").value.split(',').map(Number);
+      const target = parseInt(document.getElementById("targetInput").value);
+      let result = "No pair found.";
+
+      for (let i = 0; i < numbers.length; i++) {
+        for (let j = i + 1; j < numbers.length; j++) {
+          if (numbers[i] + numbers[j] === target) {
+            result = `Pair found at indices: [${i}, ${j}]`;
+            break;
+          }
+        }
+        if (result !== "No pair found.") break;
+      }
+
+      document.getElementById("result").textContent = result;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Find Pair with Target Sum</h2>
+    <p>Enter an array of numbers::</p>
+    <input type="text" id="numbersInput" placeholder="e.g., 1, 2, 3, 4">
+    <p>Enter the target sum:</p>
+    <input type="number" id="targetInput" placeholder="e.g., 5">
+    <button onclick="findPair()">Find Pair</button>
+    <p id="result"></p>
+  </div>
+</body>
+</html>

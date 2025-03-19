@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get First Elements of an Array</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #ffffff;
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    input, button {
+      margin: 10px 0;
+      padding: 10px;
+      width: 90%;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #02005e;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #008607;
+    }
+
+    #result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function getFirstElements() {
+      const input = document.getElementById("arrayInput").value;
+      const n = parseInt(document.getElementById("numElements").value) || 1;
+      
+     
+      const array = input.split(',').map(num => parseInt(num.trim()));
+
+
+      if (array.some(isNaN)) {
+        document.getElementById("result").textContent = "Please enter a valid array of numbers.";
+      } else {
+        document.getElementById("result").textContent = 
+          n > 0 ? `First ${n} elements: ${array.slice(0, n).join(", ")}` : "Enter a valid number.";
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Get First Elements of an Array</h1>
+    <p>Enter an array:</p>
+    <input type="text" id="arrayInput" placeholder="Enter your array">
+    <p>Enter the number of elements:</p>
+    <input type="number" id="numElements" placeholder="Enter number (e.g., 3)">
+    <button onclick="getFirstElements()">Get Elements</button>
+    <p id="result"></p>
+  </div>
+</body>
+</html>
